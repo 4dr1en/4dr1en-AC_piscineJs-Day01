@@ -6,23 +6,19 @@ function runLengthEncoding(string) {
     for (let i = 1 ; i < string.length ; i++) {
         if (string[i] == current && nbCurrent < 9) nbCurrent++;
         else { 
-            if (nbCurrent > 1) {
-                resultString += nbCurrent;
-            }
-            resultString += current;
+
+            resultString += nbCurrent+current;
             current = string[i];
             nbCurrent = 1;
         }
     }
-    if (nbCurrent > 1) {
-        resultString += nbCurrent;
-    }
-    resultString += current;
+
+    resultString += nbCurrent+current;
 
     return resultString;
 }
 
-console.log(runLengthEncoding("AAAAAAAAAAAAABBCCCCDDU"));
+console.log(runLengthEncoding("AAAAAAAAAAAAABBCCCCDDuU"));
 
 // Merci de ne pas effacer la ligne en dessous.
 exports.runLengthEncoding = runLengthEncoding;
