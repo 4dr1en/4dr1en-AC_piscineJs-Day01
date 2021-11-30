@@ -20,8 +20,8 @@ function validIPAddresses(string) {
                 let part3 = string.substring(i+j,i+j+k);
                 let part4 = string.substring(i+j+k);
 
-                if(testPartIp(part3), testPartIp(part4)){
-                    results.push(part1 + ':' + part2 + ':' + part3 + ':' + part4);
+                if(testPartIp(part3) && testPartIp(part4)){
+                    results.push(part1 + '.' + part2 + '.' + part3 + '.' + part4);
                 }
             }
         }
@@ -30,14 +30,16 @@ function validIPAddresses(string) {
 }
 
 function testPartIp(ipPart) {
-    if (ipPart.length > 1 && ipPart[0] == '0') return false
-    return ipPart.length 
-        && ipPart.length <= 3 
-        && Number(ipPart) <= 255
-    ;
+    if (ipPart.length > 1 && ipPart[0] == '0') return false;
+    if (ipPart.length < 1) return false;
+    if (ipPart.length > 3) return false;
+    if (Number(ipPart)> 255) return false;
+    return true;
 }
 
-console.log(validIPAddresses('1921680'));
+console.log(validIPAddresses('3700100'));
+
+
   
     
 // Merci de ne pas effacer la ligne en dessous.
